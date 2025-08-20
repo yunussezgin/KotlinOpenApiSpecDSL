@@ -868,7 +868,7 @@ class OpenApiBuilderTest {
                 path("/data") {
                     get {
                         summary = "Get data with complex headers"
-                        response("204", "Success") {
+                        response("200", "Success") {
                             header("X-Custom-Header") {
                                 description = "A custom header with examples"
                                 required = true

@@ -25,6 +25,7 @@ class SchemaBuilder {
     private var discriminator: Discriminator? = null
     var example: JsonElement? = null
     private var examples: Map<String, Example>? = null
+    var enumValues: List<String>? = null
 
     // Backward compatibility: allow setting oneOf as List<String>
     var oneOf: List<String>?
@@ -190,5 +191,6 @@ class SchemaBuilder {
             description = description,
             example = example,
             examples = examples,
+            enumValues = enumValues?.map { it.toJsonElement() },
         )
 }

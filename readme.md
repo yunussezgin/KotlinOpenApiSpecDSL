@@ -116,6 +116,61 @@ val json = spec.toJson()
 val yaml = spec.toYaml()
 ```
 
+## Automatic Schema Generation
+
+The library provides powerful automatic schema generation features:
+
+### Sealed Class Support
+
+Sealed classes are automatically converted to OpenAPI discriminated unions:
+
+```kotlin
+@Serializable
+sealed class PaymentMethod {
+    @Serializable
+    data class CreditCard(val number: String, val type: String = "CreditCard") : PaymentMethod()
+    
+    @Serializable
+    data class BankTransfer(val accountNumber: String, val type: String = "BankTransfer") : PaymentMethod()
+    
+    @Serializable
+    data class PayPal(val email: String, val type: String = "PayPal") : PaymentMethod()
+}
+
+val spec = openApi {
+    components {
+        schema(PaymentMethod::class) // Automatically creates discriminated union
+    }
+}
+```
+
+This generates:
+- A `oneOf` schema with references to all subclasses
+- Automatic discriminator with "type" property
+- Individual schemas for each subclass
+- Proper discriminator mapping
+
+### Enum Support
+
+Enum classes are automatically converted to string schemas with enum values:
+
+```kotlin
+enum class UserStatus {
+    ACTIVE, INACTIVE, PENDING
+}
+
+// Automatically generates schema with enum: ["ACTIVE", "INACTIVE", "PENDING"]
+```
+
+### Array Item Detection
+
+Generic array types are automatically handled:
+
+```kotlin
+@Serializable
+data class UserList(val users: List<User>) // Automatically detects User as array items
+```
+
 ## Annotation Classes
 
 In addition to builders, the library provides annotations for enhancing schema generation:

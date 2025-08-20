@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "me.farshad"
-version = "1.0.1-SNAPSHOT"
+version = "1.0.6-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -69,6 +69,25 @@ publishing {
     }
     
     repositories {
+        // For publishing to local repository
         mavenLocal()
+
+//         For publishing to a custom repository (uncomment and configure as needed)
+//         maven {
+//             name = "GitHubPackages"
+//             url = uri("https://maven.pkg.github.com/your-username/kotlin-openapi-spec-dsl")
+//             credentials {
+//                 username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+//                 password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
+//             }
+//         }
+//        maven {
+//            url = uri("https://pkgs.dev.azure.com/dcsgmbh/_packaging/libs-snapshot/maven/v1")
+//            name = "libs-snapshot"
+//            credentials {
+//                username = project.findProperty("azureDevOpsUsername") as String? ?: ""
+//                password = project.findProperty("azureDevOpsPassword") as String? ?: ""
+//            }
+//        }
     }
 }
