@@ -2,9 +2,13 @@ package me.farshad.dsl.test
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonPrimitive
 import me.farshad.dsl.annotation.SchemaDescription
 import me.farshad.dsl.builder.core.openApi
-import me.farshad.dsl.builder.utils.toJson
+import me.farshad.dsl.builder.core.toJson
+import me.farshad.dsl.builder.core.toYaml
 import me.farshad.dsl.spec.SchemaType
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
