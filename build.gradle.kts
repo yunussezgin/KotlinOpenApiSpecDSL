@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "me.farshad"
-version = "1.0.6-SNAPSHOT"
+version = "1.0.9-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -20,6 +20,9 @@ dependencies {
     
     // Kotlin reflection (needed for annotations)
     implementation("org.jetbrains.kotlin:kotlin-reflect:2.1.0")
+
+    // Logging
+    implementation("io.github.microutils:kotlin-logging:3.0.5")
     
     // Testing
     testImplementation("org.junit.jupiter:junit-jupiter:5.11.4")
