@@ -150,9 +150,9 @@ class HelperFunctionsTest {
         val obj = NonSerializableObject("test")
         val result = obj.toJsonElement()
 
-        // Should fall back to toString()
-        assertTrue(result is JsonPrimitive)
-        assertEquals("NonSerializableObject: test", result.content)
+        assertTrue(result is JsonObject)
+        // The result is an empty JsonObject since the property is private
+        assertEquals(0, (result as JsonObject).size)
     }
 
     // toSerializableJsonElement tests

@@ -34,7 +34,8 @@ class OperationBuilder {
         required: Boolean = false,
         description: String? = null,
         format: SchemaFormat? = null,
-        examples: Map<String,Example>? = null,
+        examples: Map<String, Example>? = null,
+        items: Schema? = null,
     ) {
         parameters.add(
             Parameter(
@@ -55,6 +56,7 @@ class OperationBuilder {
                                 PropertyType.NULL -> SchemaType.NULL
                             },
                         format = format,
+                        items = items,
                     ),
                 examples = examples,
             ),

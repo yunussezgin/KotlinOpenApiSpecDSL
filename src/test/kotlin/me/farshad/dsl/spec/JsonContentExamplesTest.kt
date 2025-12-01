@@ -284,26 +284,26 @@ class JsonContentExamplesTest {
         val nameUpdate = examples["name_update"]?.jsonObject
         assertNotNull(nameUpdate)
         assertEquals("Update name only", nameUpdate["summary"]?.jsonPrimitive?.content)
-        // The value gets double-encoded as a string: "\"New Name\""
+        // Value is properly serialized as a JsonObject
         val nameValue =
             nameUpdate["value"]
                 ?.jsonObject
                 ?.get("name")
                 ?.jsonPrimitive
                 ?.content
-        assertEquals("\"New Name\"", nameValue)
+        assertEquals("New Name", nameValue)
 
         val emailUpdate = examples["email_update"]?.jsonObject
         assertNotNull(emailUpdate)
         assertEquals("Update email only", emailUpdate["summary"]?.jsonPrimitive?.content)
-        // The value gets double-encoded as a string: "\"newemail@example.com\""
+        // Value is properly serialized as a JsonObject
         val emailValue =
             emailUpdate["value"]
                 ?.jsonObject
                 ?.get("email")
                 ?.jsonPrimitive
                 ?.content
-        assertEquals("\"newemail@example.com\"", emailValue)
+        assertEquals("newemail@example.com", emailValue)
     }
 
     @Test

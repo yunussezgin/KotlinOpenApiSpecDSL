@@ -15,6 +15,7 @@ private val logger = KotlinLogging.logger {}
 // Helper function to create JsonElement from any value
 fun Any.toJsonElement(): JsonElement =
     when (this) {
+        is JsonElement -> this
         is String -> JsonPrimitive(this)
         is Number -> JsonPrimitive(this)
         is Boolean -> JsonPrimitive(this)
